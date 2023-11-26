@@ -23,10 +23,11 @@ function App() {
 
   ]
   
+  const tittle = 'Simple Table'
 
   return (
     <main className="center">
-      <SampleTable columnDef={cols} data={data} />
+      <SampleTable columnDef={cols} data={data} tittle={tittle} />
 
     </main>
   )

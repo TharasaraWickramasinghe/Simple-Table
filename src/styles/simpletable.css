@@ -32,3 +32,9 @@
 .sampletable-tr:hover {
     background-color: #fafafa;
 }
+
+.table-tittle{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;   
+}

@@ -12,11 +12,13 @@ type column = {
 type simpleTableProps = {
     columnDef : column[]
     data : any[]
+    tittle: string
 }
 
-function SimpleTable({columnDef, data} : simpleTableProps): JSX.Element {
+function SimpleTable({columnDef, data, tittle} : simpleTableProps): JSX.Element {
     return(
         <div className="sampletable-wrapper">
+            <h1 className="table-tittle">{tittle}</h1>
             <table className="sampletable">
                 <thead className="sampletable-thead">
                 {
