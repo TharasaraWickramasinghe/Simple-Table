@@ -6,6 +6,7 @@ type column = {
     field: string
     width: number
     cellRenderer?: (row: any) => JSX.Element
+    headerColor? : string
 }
 
 
@@ -13,24 +14,30 @@ type simpleTableProps = {
     columnDef : column[]
     data : any[]
     tittle: string
+    viewDetails?: (row : any) => void
 }
 
-function SimpleTable({columnDef, data, tittle} : simpleTableProps): JSX.Element {
+function SimpleTable({columnDef, data, tittle, viewDetails } : simpleTableProps): JSX.Element {
     return(
         <div className="sampletable-wrapper">
             <h1 className="table-tittle">{tittle}</h1>
             <table className="sampletable">
                 <thead className="sampletable-thead">
                 {
-                    columnDef.map((col, index) => (  
-                            <th className="sampletable-th" style={{ minWidth: col.width }} key={index}> {col.header} </th> 
-                    ))
+                    columnDef.map((col, index) => {
+                        if(col.headerColor){
+                            return <th className="sampletable-th" style={{ minWidth: col.width, backgroundColor: col.headerColor }} key={index}> {col.header} </th>
+                        }else{
+                            return <th className="sampletable-th" style={{ minWidth: col.width, backgroundColor: '#e6e5e5' }} key={index}> {col.header} </th>
+                        }
+                    }
+                    )
                 }
                 </thead>
                 <tbody>
                     {
                         data.map((row, index) => (
-                            <tr className="sampletable-tr" key={index}>
+                            <tr className="sampletable-tr" key={index} onClick={() => viewDetails && viewDetails(row)}>
                                 {
                                     columnDef.map((cell, index) => {
                                         if(cell.cellRenderer){

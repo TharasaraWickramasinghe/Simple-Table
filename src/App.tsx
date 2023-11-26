@@ -3,7 +3,7 @@ import Badge from "./components/Badge"
 
 function App() {
   const cols = [
-    {header: 'Employee', field: 'employee_name', width: 200},
+    {header: 'Employee', field: 'employee_name', width: 200, headerColor: '#6FD17E'},
     {header: 'EMP Id', field: 'emp_id', width: 100},
     {header: 'Duration', field: 'duration', width: 200},
     {header: 'Leave Type', field: 'leave_type', width: 200, cellRenderer: (row: any) => {
@@ -14,16 +14,20 @@ function App() {
       }else{
         return <p style={{color: 'blue'}}>{row.leave_type}</p>
       }
-    }
+    }, headerColor: '#8990B7'
+
 
     },
     {header: 'Reason', field: 'reason', width: 200},
     {header: 'Manager Name', field: 'manager_name', width: 200},
-    {header: 'Manager Decision', field: 'manager_decision', width: 200, cellRenderer: (row: any) => <Badge color='#2b63d2'>{row.manager_decision}</Badge>}
+    {header: 'Manager Decision', field: 'manager_decision', width: 200, cellRenderer: (row: any) => <Badge color='#2b63d2'>{row.manager_decision}</Badge>, headerColor: '#CFD16F'}
 
   ]
+
   
   const tittle = 'Simple Table'
+
+
 
   return (
     <main className="center">
