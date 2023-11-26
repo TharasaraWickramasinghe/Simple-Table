@@ -1,9 +1,9 @@
-import SampleTable from "./components/SimpleTable"
+import SimpleTable from "./components/SimpleTable"
 import Badge from "./components/Badge"
 
 function App() {
   const cols = [
-    {header: 'Employee', field: 'employee_name', width: 200, headerColor: '#41A083 '},
+    {header: 'Employee', field: 'employee_name', width: 200,},
     {header: 'EMP Id', field: 'emp_id', width: 100},
     {header: 'Duration', field: 'duration', width: 200},
     {header: 'Leave Type', field: 'leave_type', width: 200, cellRenderer: (row: any) => {
@@ -17,24 +17,22 @@ function App() {
     }, 
     },
     {header: 'Reason', field: 'reason', width: 200},
-    {header: 'Manager Name', field: 'manager_name', width: 200, headerColor: '#8990B7'},
-    {header: 'Manager Decision', field: 'manager_decision', width: 200, cellRenderer: (row: any) => <Badge color='#2b63d2'>{row.manager_decision}</Badge>, headerColor: '#CFD16F'}
+    {header: 'Manager Name', field: 'manager_name', width: 200, headerColor: '#CFD16F'},
+    {header: 'Manager Decision', field: 'manager_decision', width: 200, cellRenderer: (row: any) => <Badge color='#2b63d2'>{row.manager_decision}</Badge>, headerColor: '#8990B7'}
 
   ]
  
   const tittle = 'Simple Table'
-  const tHeadColor = '#ADADA2'
+  const tHeadColor = '#e6e5e5'
   
   const onRowClick = (row: any) => {
-
       console.log(row.employee_name)
   }
 
 
   return (
     <main className="center">
-      <SampleTable columnDef={cols} data={data} tittle={tittle} tHeadBgColor={tHeadColor} onRowClick={onRowClick} />
-
+      <SimpleTable columnDef={cols} data={data} tittle={tittle} tHeadBgColor={tHeadColor} onRowClick={onRowClick} />
     </main>
   )
 }

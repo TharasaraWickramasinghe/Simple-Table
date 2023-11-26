@@ -31,7 +31,7 @@ function SimpleTable({columnDef, data, tittle, tHeadBgColor, onRowClick } : simp
                         if(col.headerColor){
                             return <th className="sampletable-th" style={{ minWidth: col.width, backgroundColor: col.headerColor }} key={index}> {col.header} </th>
                         }else{
-                            return <th className="sampletable-th" style={{ minWidth: col.width, backgroundColor: tHeadBgColor ? tHeadBgColor : '#e6e5e5', }} key={index}> {col.header} </th>
+                            return <th className="sampletable-th" style={{ minWidth: col.width, backgroundColor: tHeadBgColor ? tHeadBgColor : '#ADADA2', }} key={index}> {col.header} </th>
                         }
                     }
                     )
