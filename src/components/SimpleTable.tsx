@@ -13,22 +13,25 @@ type column = {
 type simpleTableProps = {
     columnDef : column[]
     data : any[]
-    tittle: string
-    viewDetails?: (row : any) => void
+    tittle : string
+    tHeadBgColor? : string
+    onRowClick?: (row : any) => void 
 }
 
-function SimpleTable({columnDef, data, tittle, viewDetails } : simpleTableProps): JSX.Element {
+function SimpleTable({columnDef, data, tittle, tHeadBgColor, onRowClick } : simpleTableProps): JSX.Element {
     return(
         <div className="sampletable-wrapper">
             <h1 className="table-tittle">{tittle}</h1>
+            
             <table className="sampletable">
-                <thead className="sampletable-thead">
+                
+                <thead>
                 {
                     columnDef.map((col, index) => {
                         if(col.headerColor){
                             return <th className="sampletable-th" style={{ minWidth: col.width, backgroundColor: col.headerColor }} key={index}> {col.header} </th>
                         }else{
-                            return <th className="sampletable-th" style={{ minWidth: col.width, backgroundColor: '#e6e5e5' }} key={index}> {col.header} </th>
+                            return <th className="sampletable-th" style={{ minWidth: col.width, backgroundColor: tHeadBgColor ? tHeadBgColor : '#e6e5e5', }} key={index}> {col.header} </th>
                         }
                     }
                     )
@@ -37,7 +40,7 @@ function SimpleTable({columnDef, data, tittle, viewDetails } : simpleTableProps)
                 <tbody>
                     {
                         data.map((row, index) => (
-                            <tr className="sampletable-tr" key={index} onClick={() => viewDetails && viewDetails(row)}>
+                            <tr className="sampletable-tr" key={index} onClick={() => onRowClick && onRowClick(row)}>
                                 {
                                     columnDef.map((cell, index) => {
                                         if(cell.cellRenderer){
